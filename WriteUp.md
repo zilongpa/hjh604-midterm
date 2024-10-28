@@ -23,7 +23,7 @@ One of the most important tasks I undertook was grouping the ratings by `userID`
   - **Count of Ratings:** This provides insight into the user’s experience and qualifications.
   - **Standard Deviation (STD):** This indicates the range of ratings a user typically gives. For instance, some users, like myself, tend to score movies between 2 and 4, categorizing films as either masterpieces or total failures.
 
-![image-20241028025331673](C:\Users\hjh60\Documents\GitHub\hjh604-midterm\assets\image-20241028025331673.png)
+![image-20241028025331673](assets\image-20241028025331673.png)
 
 
 
@@ -39,7 +39,7 @@ By analyzing feature importance plots and correlation matrices, I found that `Ti
 
 - Here's the Correlation Matrix and you can see that I had already dropped some of the features. (Q1, Median, Q3)
 
-<img src="C:\Users\hjh60\Documents\GitHub\hjh604-midterm\assets\image-20241028025132976.png" alt="image-20241028025132976" style="zoom:50%;" />
+<img src="assets\image-20241028025132976.png" alt="image-20241028025132976" style="zoom:50%;" />
 
 
 
@@ -51,7 +51,7 @@ The only NLP features I included were the sentiment scores of the `Summary` and 
 
 ### Addressing Class Imbalance
 
-![image-20241028025048608](C:\Users\hjh60\Documents\GitHub\hjh604-midterm\assets\image-20241028025048608.png)
+![image-20241028025048608](assets\image-20241028025048608.png)
 
 Upon observing the distribution plot, I discovered that the dataset was extremely imbalanced. To address this, I employed SMOTE to oversample the features mentioned earlier in the 1 to 4 star comments, aligning their numbers with those of the 5-star ratings. Fortunately, this strategy improved model performance.
 
@@ -79,4 +79,4 @@ I utilized GridSearchCV for tuning, exploring the relationships between key para
 
 I attempted to use another vote classifier (I don't want to train 3 heavy models in a row), but it resulted in the worst performance. The combined predictions were even less accurate than those made by the individual models, LGBM and XGBoost. I had hoped that these models would balance out each other’s biases, but it seems they ended up making the same mistakes together!
 
-![image-20241028025549710](C:\Users\hjh60\Documents\GitHub\hjh604-midterm\assets\image-20241028025549710.png)
+![image-20241028025549710](assets\image-20241028025549710.png)
