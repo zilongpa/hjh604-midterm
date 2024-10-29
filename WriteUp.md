@@ -11,7 +11,7 @@ I don’t have extensive knowledge about NLP, so I essentially approached this c
 
 I explore the dataset by using `df.dtypes` to see the data type of each column, using `df.describe` to get the information about the distribution of the data, and then using `df.head` to get a few examples of the samples so I could have an initial thought about how to make each column into usable features. 
 
-```json
+```
 Id   ProductId          UserId  HelpfulnessNumerator  \
 0   914403  B0009W5KHM   AV6QDP8Q0ONK4                     2   
 1   354887  6303079709  A2I8RXJN80A2D2                     0   
