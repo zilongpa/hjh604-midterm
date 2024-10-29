@@ -72,7 +72,7 @@ max    1.406074e+09  5.000000e+00
 
 I also draw a correlation matrix after feature processing to see if any of the features are strongly related.
 
-<img src="assets\image-20241028025132976.png" alt="image-20241028025132976" style="zoom:50%;" />
+<img src="assets/image-20241028025132976.png" alt="image-20241028025132976" style="zoom:50%;" />
 
 
 
@@ -119,7 +119,7 @@ The only NLP features I included were the sentiment scores of the `Summary` and 
 
 Here is a plot showing the importance of each feature in my XGBoost model.
 
-![image-20241028025331673](assets\image-20241028025331673.png)
+![image-20241028025331673](assets/image-20241028025331673.png)
 
 
 
@@ -129,7 +129,7 @@ Here is a plot showing the importance of each feature in my XGBoost model.
 
 ### Oversample
 
-![image-20241028025048608](assets\image-20241028025048608.png)
+![image-20241028025048608](assets/image-20241028025048608.png)
 
 Upon observing the distribution plot, I discovered that the dataset was extremely imbalanced. To address this, I employed SMOTE to oversample the features mentioned earlier in the 1 to 4 star comments, aligning their numbers with those of the 5-star ratings. Fortunately, this strategy improved model performance.
 
@@ -155,7 +155,7 @@ I typically prefer regression techniques, clamping scores into integers since di
 
 I attempted to use another vote classifier (I don't want to train 3 heavy models in a row), but it resulted in the worst performance. The combined predictions were even less accurate than those made by the individual models, LGBM and XGBoost. I had hoped that these models would balance out each other’s biases, but it seems they ended up making the same mistakes together!
 
-![image-20241028025549710](assets\image-20241028025549710.png)
+![image-20241028025549710](assets/image-20241028025549710.png)
 
 
 
