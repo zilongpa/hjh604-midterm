@@ -11,7 +11,7 @@ I don’t have extensive knowledge about NLP, so I essentially approached this c
 
 I explore the dataset by using `df.dtypes` to see the data type of each column, using `df.describe` to get the information about the distribution of the data, and then using `df.head` to get a few examples of the samples so I could have an initial thought about how to make each column into usable features. 
 
-```json
+```
 Id   ProductId          UserId  HelpfulnessNumerator  \
 0   914403  B0009W5KHM   AV6QDP8Q0ONK4                     2   
 1   354887  6303079709  A2I8RXJN80A2D2                     0   
@@ -161,7 +161,30 @@ I attempted to use another vote classifier (I don't want to train 3 heavy models
 
 ## Hyperparameter Tuning
 
-I utilized GridSearchCV for tuning, exploring the relationships between key parameters like `n-estimators`, `max-depth`, and `learning_rate`, which are crucial for optimizing XGBoost.
+I utilized `GridSearchCV` for tuning, exploring the relationships between key parameters like `n-estimators`, `max-depth`, and `learning_rate`, which are crucial for optimizing XGBoost.
+
+```json
+Best Parameters:  {'learning_rate': 0.1, 'max_depth': 10, 'n_estimators': 200}
+Best Score:  0.715226335924629
+```
+
+
+
+## Validation Strategy
+
+### Cross-Validation with K-Folds
+
+Since `GridSearchCV` handled hyperparameter tuning, cross-validation was integrated into the grid search process, making additional manual 5 folds stratified cross-validation unnecessary. Following tuning, the model achieved an average cross-validation score of **0.715** on the full training dataset and an accuracy score of **0.7165** when trained on 80% of the data and tested on the remaining 20%. However, on the Kaggle public test dataset, the score dropped significantly to **0.6332**. This discrepancy indicated that the dataset is very prone to overfitting, especially since my CV and test accuracy were so close. As a result, I intentionally simplified the complexity of my XGBoost model in the latest version, but unfortunately, this led to worse results.
+
+
+
+### Evaluation with Confusion Matrix
+
+Later, I visualized a confusion matrix to assess the model’s performance, which helped identify classification tendencies. The matrix revealed inconsistencies in predicting mid-range scores, indicating potential overfitting to higher ratings (4-5 stars). I'm still struggling to find an effective way to address this issue.
+
+> All ratings are aligned to 0 here; add 1 to make them the real ratings.
+
+![__results___17_1](assets/__results___17_1.png)
 
 
 
